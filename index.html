@@ -33,12 +33,12 @@
         <!-- MAIN------ -->
         <main>
             <ul>
-                <li v-for="(movie,index) in searchedMovies">
+                <li v-for="(movie,index) in searchedMovies" class="box-movies">
                     <ul>
-                        <li>{{movie.title}}</li>
-                        <li>{{movie.original_title}}</li>
-                        <li>{{movie.original_language}}</li>
-                        <li>{{movie.vote_average}}</li>
+                        <li>Titolo : {{movie.title}}</li>
+                        <li>Titolo originale : {{movie.original_title}}</li>
+                        <li>Lingua : {{movie.original_language}}</li>
+                        <li>Voto : {{movie.vote_average}}</li>
                     </ul>
                 </li>
             </ul>
