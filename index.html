@@ -38,7 +38,10 @@
                         <li>Titolo : {{movie.title}}</li>
                         <li>Titolo originale : {{movie.original_title}}</li>
                         <li>Lingua : {{movie.original_language}}</li>
-                        <li>Voto : {{movie.vote_average}}</li>
+                        <li>
+                            <i v-for="n in starVote(movie.vote_average)" class="fas fa-star"></i>
+                            <i v-for="n in (starNumber - starVote(movie.vote_average))" class="far fa-star"></i>
+                        </li>
                     </ul>
                 </li>
             </ul>
