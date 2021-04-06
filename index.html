@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- FONT------>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME--- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+    <!-- JS--- -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel="stylesheet" href="css/master.css">
+    <title>Vue Boolflix</title>
+</head>
+<body>
+    <div id="root">
+        <!-- HEADER---- -->
+        <header>
+            <img id="logo_header" src="img/logo_netflix.png" alt="logo boolfix">
+            <div>
+                <input v-model="searchbar" @keyup.enter="searchMovie()" type="text" placeholder="Inserisci un titolo">
+                <button @click="searchMovie()">Cerca</button>
+            </div>
+        </header>
+
+        <!-- MAIN------ -->
+        <main>
+            <ul>
+                <li v-for="(movie,index) in searchedMovies">
+                    <ul>
+                        <li>{{movie.title}}</li>
+                        <li>{{movie.original_title}}</li>
+                        <li>{{movie.original_language}}</li>
+                        <li>{{movie.vote_average}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
