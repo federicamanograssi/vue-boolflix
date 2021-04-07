@@ -38,6 +38,9 @@
             <ul>
                 <li v-for="research in userResearchResults" class="box-movies">
                     <ul>
+                        <li>
+                            <img :src="imgMovieSrc+imgMovieSize+research.poster_path" :alt="research.title||research.name">
+                        </li>
                         <li>Titolo : {{research.title||research.name}}</li>
                         <li>Titolo originale : {{research.original_title||research.original_name}}</li>
                         <li>Lingua : 
