@@ -28,8 +28,8 @@
         <header>
             <img id="logo_header" src="img/logo_boolflix.png" alt="logo boolfix">
             <div>
-                <input v-model="searchbar" @keyup.enter="userResearch()" type="text" placeholder="Inserisci un titolo">
-                <button @click="userResearch()">Cerca</button>
+                <input v-model="searchbar" @keyup.enter="userResearch(),searchbar=''" type="text" placeholder="Inserisci un titolo">
+                <button @click="userResearch(),searchbar=''">Cerca</button>
             </div>
         </header>
 

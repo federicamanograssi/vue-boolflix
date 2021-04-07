@@ -10,6 +10,7 @@ var app= new Vue({
     },
     methods : {
         userResearch(){
+            this.userResearchResults = [];
             let searchedMovies= [];
             let searchedSeries = [];
 
@@ -35,7 +36,7 @@ var app= new Vue({
                         query: this.searchbar
                     }})
                 .then((searchedSeriesList)=>{
-                    console.log(searchedSeriesList)
+                    // console.log(searchedSeriesList)
                     searchedSeries = searchedSeriesList.data.results;
                     this.userResearchResults= this.userResearchResults.concat(searchedSeries)
                 });
