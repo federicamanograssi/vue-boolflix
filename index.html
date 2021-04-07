@@ -12,6 +12,9 @@
     <!-- FONT AWESOME--- -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 
+    <!-- FONT FLAG--- -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" /> -->
+
     <!-- JS--- -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
@@ -23,21 +26,27 @@
     <div id="root">
         <!-- HEADER---- -->
         <header>
-            <img id="logo_header" src="img/logo_netflix.png" alt="logo boolfix">
+            <img id="logo_header" src="img/logo_boolflix.png" alt="logo boolfix">
             <div>
-                <input v-model="searchbar" @keyup.enter="searchMovie()" type="text" placeholder="Inserisci un titolo">
-                <button @click="searchMovie()">Cerca</button>
+                <input v-model="searchbar" @keyup.enter="userResearch()" type="text" placeholder="Inserisci un titolo">
+                <button @click="userResearch()">Cerca</button>
             </div>
         </header>
 
         <!-- MAIN------ -->
         <main>
             <ul>
-                <li v-for="(movie,index) in searchedMovies" class="box-movies">
+                <li v-for="movie in userResearchResults" class="box-movies">
                     <ul>
                         <li>Titolo : {{movie.title}}</li>
                         <li>Titolo originale : {{movie.original_title}}</li>
-                        <li>Lingua : {{movie.original_language}}</li>
+                        <li>Lingua : 
+
+                            <!-- <span v-if="movie.original_language == 'en'" class="flag-icon flag-icon-gb"></span>
+                            <span v-else-if :class="'flag-icon flag-icon-'+movie.original_language"></span> -->
+                            <img v-if="movie.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="movie.original_language" class="lang_flag">
+                            <img v-else :src="'https://www.countryflags.io/'+movie.original_language+'/shiny/64.png'" :alt="movie.original_language" class="lang_flag" >
+                             </li>
                         <li>
                             <i v-for="n in starVote(movie.vote_average)" class="fas fa-star"></i>
                             <i v-for="n in (starNumber - starVote(movie.vote_average))" class="far fa-star"></i>

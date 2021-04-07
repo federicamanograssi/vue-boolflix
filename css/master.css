@@ -38,3 +38,8 @@ main .box-movies{
     padding: 10px;
     margin: 10px;
 }
+
+.lang_flag{
+    width: 30px;
+    height: 30px;
+}
