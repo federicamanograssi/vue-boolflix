@@ -20,7 +20,7 @@ var app= new Vue({
                 .get('https://api.themoviedb.org/3/search/movie',
                     {params : {
                         api_key : this.apiKey,
-                        query : this.searchbar
+                        query : this.searchbar,
                     }})
                 .then((searchedMovieList)=>{
 

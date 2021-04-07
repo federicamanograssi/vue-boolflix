@@ -35,7 +35,28 @@
 
         <!-- MAIN------ -->
         <main>
-            <ul>
+            <div class="container_wrapped flex">
+                <div class="movie_card" v-for="research in userResearchResults" :style="{ backgroundImage: 'url(' + imgMovieSrc+imgMovieSize+research.poster_path + ')' }">
+                    <div v-if="research.poster_path ==''||research.poster_path == null" class="no_cover_movie">
+                        <h2>{{research.title||research.name}}</h2>
+                    </div>
+                    <!-- SE  NON VOGLIAMO USARLA DIRETTAMENTE COME SFONDO -->
+                    <!-- <img v-else :src="imgMovieSrc+imgMovieSize+research.poster_path" :alt="research.title||research.name"> -->
+                    <div class="hover-details flex-column">
+                        <h2><strong>Titolo:</strong> {{research.title||research.name}}</h2>
+                        <p v-if="research.title!=research.original_title||research.name!=research.original_name"><strong>Titolo originale:</strong> {{research.original_title||research.original_name}}</p>
+                        <div class="flex align-center">
+                            <img v-if="research.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="research.original_language" class="lang_flag">
+                            <img v-else :src="'https://www.countryflags.io/'+research.original_language+'/shiny/64.png'" :alt="research.original_language" class="lang_flag">
+                            <i v-for="n in starVote(research.vote_average)" class="fas fa-star"></i>
+                            <i v-for="n in (starNumber - starVote(research.vote_average))" class="far fa-star"></i>
+                        </div>
+                        <p class="movie_overview">{{research.overview}}</p>
+                    </div>
+                </div>
+            </div>
+            
+          <!--   <ul>
                 <li v-for="research in userResearchResults" class="box-movies">
                     <ul>
                         <li>
@@ -44,11 +65,11 @@
                         <li>Titolo : {{research.title||research.name}}</li>
                         <li>Titolo originale : {{research.original_title||research.original_name}}</li>
                         <li>Lingua : 
-                            <!-- SOLUZIONE tramite libreria esterna (attivare cdn sopra-)-->
-                            <!-- <span v-if="research.original_language == 'en'" class="flag-icon flag-icon-gb"></span>
-                            <span v-else-if :class="'flag-icon flag-icon-'+research.original_language"></span> -->
+                            <!~~ SOLUZIONE tramite libreria esterna (attivare cdn sopra-)~~>
+                            <!~~ <span v-if="research.original_language == 'en'" class="flag-icon flag-icon-gb"></span>
+                            <span v-else-if :class="'flag-icon flag-icon-'+research.original_language"></span> ~~>
 
-                            <!-- SOLUZIONE tramite img esterne con cambio en -->
+                            <!~~ SOLUZIONE tramite img esterne con cambio en ~~>
                             <img v-if="research.original_language=='en'" src="https://www.countryflags.io/gb/shiny/64.png" alt="research.original_language" class="lang_flag">
                             <img v-else :src="'https://www.countryflags.io/'+research.original_language+'/shiny/64.png'" :alt="research.original_language" class="lang_flag" >
                              </li>
@@ -58,9 +79,11 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> -->
         </main>
     </div>
     <script src="js/main.js"></script>
 </body>
 </html>
+
+

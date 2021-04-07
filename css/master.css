@@ -4,7 +4,19 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+/* COMMON STYLE----------------------------------------------------------------------> */
+.flex{
+    display: flex;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex.align-center{
+    align-items: center;
+}
 
+/* HEADER----------------------------------------------------------------------> */
 header{
     display: flex;
     justify-content: space-between;
@@ -24,21 +36,79 @@ header button{
     border-radius: 5px;
 }
 
+/* MAIN----------------------------------------------------------------------> */
 
 main{
     width: 100%;
     min-height: calc(100vh - 70px);
     background-color: #1e2d3b;
-    padding: 30px 0;
+}
+main .container_wrapped{
+    max-width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-main .box-movies{
+/* MOVIE CARD----------------------------------------------------------------------> */
+
+.movie_card,
+.no_cover_movie{
+    width: 342px;
+    height: 513px;
+    background-color: gray;
+    /* margin: 5px; */
+}
+.movie_card{
+    position: relative;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+}
+.no_cover_movie{
+    padding: 10px
+}
+.movie_card h2,
+.movie_card p,
+.movei_card .hover-details>div {
+    margin-bottom: 10px;
+}
+
+.movie_card:hover .hover-details{
+    display: flex;
+}
+.hover-details {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    display: none;
+    background: rgba(34, 34, 34, 0.85);
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 10px;
+    justify-content: flex-start;
+}
+
+
+.hover-details .lang_flag{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px
+} 
+
+/* main .box-movies{
     background-color: #efefef;
     padding: 10px;
     margin: 10px;
 }
-
 .lang_flag{
-    width: 30px;
-    height: 30px;
-}
+    width: 20px;
+    height: 20px;
+} */
+
